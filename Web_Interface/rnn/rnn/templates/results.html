@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Processing Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 20px 30px;
+            max-width: 700px;
+            width: 90%;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.2rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        h2 {
+            font-size: 1.5rem;
+            color: #555;
+            margin: 20px 0 10px;
+        }
+        img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 1rem;
+            color: #555;
+            margin-top: 20px;
+        }
+        .runtime, .metric {
+            font-weight: bold;
+            color: #0072ff;
+        }
+        .back-button {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Processing Results</h1>
+        <h2>Original Video Frames (GIF)</h2>
+        <img src="{{ url_for('static', filename='original.gif') }}" alt="Original GIF" />
+        <h2>Prediction Frames (GIF)</h2>
+        <img src="{{ url_for('static', filename='prediction.gif') }}" alt="Prediction GIF" />
+        
+        <p>Runtime: <span class="runtime">{{ runtime }}</span> seconds</p>
+        <h2>Metrics</h2>
+        <p>SSIM: <span class="metric">{{ ssim }}</span></p>
+        <p>MSE: <span class="metric">{{ mse }}</span></p>
+
+        <a href="/" class="back-button">Upload Another Video</a>
+    </div>
+</body>
+</html>
